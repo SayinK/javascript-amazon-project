@@ -1,4 +1,5 @@
 import {cart} from '../data/cart.js'; //.. goes out of the scripts folder
+import {products} from '../data/products.js'; 
 
 let productsHTML = '';
 
