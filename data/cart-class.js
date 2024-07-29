@@ -2,15 +2,15 @@
 //create functions that generates products
 class Cart{
     cartItems;
-    localStorageKey;
+    #localStorageKey; //privatre property = only accessed in the class
 
     constructor(localStorageKey) { //after we create out object, it will run the constructor and set everything up
-        this.localStorageKey = localStorageKey; //this points to the object we are creating
-        this.loadFromStorage();
+        this.#localStorageKey = localStorageKey; //this points to the object we are creating
+        this.#loadFromStorage();
     }
 
-    loadFromStorage(){
-        this.cartItems = JSON.parse(localStorage.getItem(this.localStorageKey)); //turns it back into array
+    #loadFromStorage(){
+        this.cartItems = JSON.parse(localStorage.getItem(this.#localStorageKey)); //turns it back into array
     
         if(!this.cartItems){
         this.cartItems = [{
@@ -26,7 +26,7 @@ class Cart{
     }
 
     saveToStorage(){
-        localStorage.setItem(this.localStorageKey,JSON.stringify(this.cartItems));
+        localStorage.setItem(this.#localStorageKey,JSON.stringify(this.cartItems));
     }
 
     addtoCart(productId){
@@ -83,6 +83,8 @@ class Cart{
 }
 const cart = new Cart('cart-oop'); //this is called an instance of a class
 const businessCart = new Cart('cart-business');
+
+cart.#localStorageKey = 'test'; //will fail
 
 console.log(cart);
 console.log(businessCart);
