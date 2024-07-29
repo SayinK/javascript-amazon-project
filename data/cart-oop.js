@@ -1,4 +1,5 @@
 //easy to create multiple objects
+//create functions that generates products
 function Cart(localStorageKey){
     const cart = {
         cartItems: undefined,
