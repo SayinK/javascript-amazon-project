@@ -54,8 +54,7 @@ class Clothing extends Product{ //will inhert all the properties and methods fro
   }
 }
 
-/*
-const date = new Date();
+/*const date = new Date();
 console.log(date);
 console.log(date.toLocaleTimeString());*/
 
@@ -65,7 +64,7 @@ const object2 = {
   b: this.a //will be undefined again (object2 isnt made yet)
 }*/
 
-function logThis(){
+/*function logThis(){
   console.log(this); //will bve undefined
 }
 logThis();
@@ -76,7 +75,7 @@ const object3={
   method: ()=>{
     console.log(this); //will be undefined (keeps the value of this out of the arrow function)
   }
-}
+}*/
 
 
 export const products = [
