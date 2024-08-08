@@ -6,14 +6,20 @@ import {loadCart} from '../data/cart.js';
 //import '../data/cart-class.js';
 
 async function loadPage(){ //async makes function return a promise
+    try{
+        //throw 'error 1'; manually creates an error
+        await loadProducts(); //lets use write asynchronous code like normal code (.then of promise); waits for this function to run
 
-    await loadProducts(); //lets use write asynchronous code like normal code (.then of promise); waits for this function to run
-
-    await new Promise((resolve)=>{
-        loadCart(()=>{
-            resolve();
+        const value = await new Promise((resolve, reject)=>{ //reject lets us create an error in the future
+            //throw 'error 2'
+            loadCart(()=>{
+                //reject('error3');
+                resolve('value3');
+            });
         });
-    });
+    } catch(error) {
+        console.log('unexpected error. please try again')
+    }
 
     renderOrderSummary();
     renderPaymentSummary();
