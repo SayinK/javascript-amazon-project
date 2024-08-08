@@ -5,6 +5,25 @@ import {loadCart} from '../data/cart.js';
 //import '../data/backend-practice.js';
 //import '../data/cart-class.js';
 
+async function loadPage(){ //async makes function return a promise
+
+    await loadProducts(); //lets use write asynchronous code like normal code (.then of promise); waits for this function to run
+
+    await new Promise((resolve)=>{
+        loadCart(()=>{
+            resolve();
+        });
+    });
+
+    renderOrderSummary();
+    renderPaymentSummary();
+
+}
+loadPage();
+
+
+
+/*
 Promise.all([ //runs both promises at the same time
     new Promise((resolve)=>{  
         console.log('start promise')
@@ -25,7 +44,9 @@ Promise.all([ //runs both promises at the same time
     console.log(values);
     renderOrderSummary();
     renderPaymentSummary();
-});
+});*/
+
+
 
 /*
 new Promise((resolve)=>{  //better way to handle asynchronous code; similar to done() function in Jasmine; let us wait for some code to finish before going to the next step
