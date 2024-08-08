@@ -1,6 +1,6 @@
 import { renderOrderSummary} from "./checkout/orderSummary.js";
 import { renderPaymentSummary } from "./checkout/paymentSummary.js";
-import {loadProducts} from '../data/products.js';
+import {loadProducts, loadProductsFetch} from '../data/products.js';
 import {loadCart} from '../data/cart.js';
 //import '../data/backend-practice.js';
 //import '../data/cart-class.js';
@@ -13,7 +13,7 @@ Promise.all([ //runs both promises at the same time
             resolve('value1'); 
         });
     
-    }),
+    }), //!!!!!! can just write loadProductsFech() since this returns a promise (but its not working for me :()
 
     new Promise((resolve)=>{
         loadCart(()=>{

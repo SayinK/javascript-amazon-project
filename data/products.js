@@ -78,6 +78,30 @@ const object3={
 }*/
 
 export let products = [];
+
+export function loadProductsFetch(){
+
+  const promise = fetch("https://supersimplebackend.dev/products").then((response)=>{ //makes an HTTP request
+    return response.json(); //this is also a promise, so after it gets the json, it will move to the then
+  }).then((productsData)=>{
+    productsData.map((productDetails)=>{
+      if(productDetails.type === 'clothing'){
+        return new Clothing(productDetails);
+      }
+      return new Product(productDetails);
+    });   //turning it back into JS
+    console.log('load products');
+  });
+
+  return promise;
+}
+
+/*
+loadProductsFetch().then(()=>{ //attaches another step
+  console.log('next step')
+});*/
+
+
 export function loadProducts(fun){ 
   const xhr = new XMLHttpRequest();
 
